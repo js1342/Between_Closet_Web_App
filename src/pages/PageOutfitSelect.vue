@@ -1,6 +1,11 @@
 <template>
   <div class="q-pa-md banner" style="max-width: 450px">
-    <q-banner inline-actions rounded class="bg-primary text-grey-9">
+    <q-banner
+      style="text-align: center"
+      inline-actions
+      rounded
+      class="bg-primary text-grey-9"
+    >
       친구에게 코디 전송하기
     </q-banner>
 
@@ -130,6 +135,7 @@
         type="submit"
         :outfit="selected"
         class="submitbtn"
+        style="color: black; width: 100%; margin-top: 3%"
     /></router-link>
   </div>
 </template>
@@ -146,7 +152,6 @@ export default {
       outer: null,
       onepiece: null,
       selected: [],
-
       friend_user_id: null,
       my_user_id: 2, // ★★★★★ 본인 아이디 넣기 ★★★★★
     };
@@ -156,6 +161,12 @@ export default {
   },
   mounted() {
     this.getTop(), this.getBottom(), this.getOuter(), this.getOnePiece();
+    if (this.friend_user_id == null) {
+      console.log("fdf");
+      this.selected.push(this.my_user_id);
+    } else {
+      this.selected.push(this.friend_user_id);
+    }
   },
   methods: {
     getTop() {
@@ -223,7 +234,7 @@ export default {
       console.log("finished");
     },
     checkOutfit() {
-      console.log(this.selected);
+      console.log(this.friend_user_id);
     },
   },
 };
