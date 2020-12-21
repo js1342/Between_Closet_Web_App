@@ -7,7 +7,8 @@ const routes = [
       { path: '/friendlist', component: () => import('pages/PageFriendList.vue') },
       { path: '/friendsearch', component: () => import('pages/PageFriendSearch.vue') },
       { path: '/mypage', name: 'PageProfile', component: () => import('pages/PageProfile.vue') },
-      { path: '/recommendations', component: () => import('pages/PageRecommendations.vue') },
+      { path: '/recommenu', component: () => import('pages/PageColorSelect.vue') },
+      { path: '/recommendations/:rank', component: () => import('pages/PageRecommendations.vue') },
       { path: '/outfitselect', name: 'PageOutfitSelect', component: () => import('pages/PageOutfitSelect.vue') },
       { path: '/sendOutfit', name: 'PageMakeCodi', component: () => import('pages/PageMakeCodi.vue') }
 

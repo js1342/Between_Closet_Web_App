@@ -1,109 +1,22 @@
 <template>
   <q-page class="constrain">
       <div class="q-pa-xs">
-        <q-carousel
-        v-model="slide"
-        swipeable
-        animated
-        navigation
-        height="690px"
-        
-        flat
-        class="bg-white"
-        >
-        <template  v-slot:navigation-icon="{ active, btnProps, onClick }">
-            <q-btn v-if="active" size="sm" :icon="btnProps.icon" color="pink-5" flat round dense @click="onClick" />
-            <q-btn v-else size="sm" :icon="btnProps.icon" color="grey-3" flat round dense @click="onClick" />
-        </template>
-
-        <q-carousel-slide name="1st" class="frameAlign column no-wrap flex-center">
-                <q-card
-        v-for="item in recoms.data"
-                :key="`none-${item}`"
-        class="card-post q-mb-md"
-        flat bordered
-        >
-        <q-item>
-            <q-img :src="item.url" />
-        </q-item>
-        <q-separator />
-        <q-item>
-            <q-btn id="like" flat size="18px" icon="eva-heart" />
-            <div class=likes caption>{{item.likes}}명이 좋아했습니다</div>
-        </q-item>
-    </q-card>
-        </q-carousel-slide>
-        <q-carousel-slide name="2nd" class="frameAlign column no-wrap flex-center">
-          <q-card
-        v-for="item in recoms.data"
-                :key="`none-${item}`"
-        class="card-post q-mb-md"
-        flat bordered
-        >
-        <q-item>
-            <q-img :src="item.url" />
-        </q-item>
-        <q-separator />
-        <q-item>
-            <q-btn id="like" flat size="18px" icon="eva-heart" />
-            <div class=likes caption>{{item.likes}}명이 좋아했습니다</div>
-        </q-item>
-    </q-card>
-        </q-carousel-slide>
-        <q-carousel-slide name="3rd" class="frameAlign column no-wrap flex-center">
-          <q-card
-        v-for="item in recoms.data"
-                :key="`none-${item}`"
-        class="card-post q-mb-md"
-        flat bordered
-        >
-        <q-item>
-            <q-img :src="item.url" />
-        </q-item>
-        <q-separator />
-        <q-item>
-            <q-btn id="like" flat size="18px" icon="eva-heart" />
-            <div class=likes caption>{{item.likes}}명이 좋아했습니다</div>
-        </q-item>
-    </q-card>
-        </q-carousel-slide>
-        <q-carousel-slide name="4th" class="frameAlign column no-wrap flex-center">
-          <q-card
-        v-for="item in recoms.data"
-                :key="`none-${item}`"
-        class="card-post q-mb-md"
-        flat bordered
-        >
-        <q-item>
-            <q-img :src="item.url" />
-        </q-item>
-        <q-separator />
-        <q-item>
-            <q-btn id="like" flat size="18px" icon="eva-heart" />
-            <div class=likes caption>{{item.likes}}명이 좋아했습니다</div>
-        </q-item>
-    </q-card>
-        </q-carousel-slide>
-        <q-carousel-slide name="5th" class="frameAlign column no-wrap flex-center">
-          <q-card
-        v-for="item in recoms.data"
-                :key="`none-${item}`"
-        class="card-post q-mb-md"
-        flat bordered
-        >
-        <q-item>
-            <q-img :src="item.url" />
-        </q-item>
-        <q-separator />
-        <q-item>
-            <q-btn id="like" flat size="18px" icon="eva-heart" />
-            <div class=likes caption>{{item.likes}}명이 좋아했습니다</div>
-        </q-item>
-    </q-card>
-        </q-carousel-slide>
-        </q-carousel>
+        <q-card
+            v-for="item in recoms.data"
+                    :key="`none-${item}`"
+            class="card-post q-mb-md"
+            flat bordered
+            >
+            <q-item>
+                <q-img :src="item.url" />
+            </q-item>
+            <q-separator />
+            <q-item>
+                <q-btn id="like" flat size="18px" icon="eva-heart" />
+                <div class=likes caption>{{item.likes}}명이 좋아했습니다</div>
+            </q-item>
+        </q-card>
     </div>
-
   </q-page>
 </template>
 
@@ -114,6 +27,11 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "PageHome",
+  mounted() {
+    // this.rank = this.$route.params.rank
+    this.clothesRecoms();
+
+  },
   data() {
     return {
         slide: 'style',
@@ -126,18 +44,18 @@ export default {
     },
   },
   methods: {
-      clothesRecoms() {
-          Axios.get(
-              "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/recommendations",
+      async clothesRecoms() {
+        let rank = this.$route.params.rank
+        console.log(rank)
+          await Axios.get(
+              `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/recommendations/${rank}`,
               ).then((res) => {
             console.log(res);
             this.recoms = res;
             });
         }
     },
-  mounted() {
-      this.clothesRecoms();
-  }
+  
 };
 </script>
 

@@ -35,7 +35,7 @@
           to="/"
           icon="eva-home-outline" />
           <q-route-tab
-          to="recommendations"
+          to="recommenu"
           icon="eva-search-outline" />
         <q-route-tab
           to="/friendsearch"
