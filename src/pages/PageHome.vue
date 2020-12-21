@@ -15,9 +15,9 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label class="text-bold">yongin</q-item-label>
+          <q-item-label class="text-bold">{{item.name}}</q-item-label>
           <q-item-label caption>
-            {{ email }}
+            {{ item.email }}
           </q-item-label>
         </q-item-section>
       </q-item>
@@ -58,7 +58,7 @@ export default {
   methods: {
     getClothes() {
       Axios.get(
-        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/1"
+        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/all"
       ).then((res) => {
         console.log(res);
         this.clothes = res;
