@@ -35,15 +35,16 @@
 <script>
 import PageOutfitSelect from "./PageOutfitSelect";
 import Axios from "axios";
+import { JS } from "aws-amplify";
 export default {
   mounted() {
-    this.friend_id = this.outfit[0];
+    this.user_id = this.outfit[0];
     this.real_outfit = this.outfit.slice(1, this.outfit.length);
-    console.log(">>>friend_id>>>", this.real_outfit);
+    console.log(">>>user>>>", this.real_outfit);
   },
   data() {
     return {
-      friend_id: null,
+      user_id: null,
       outfit: null,
       real_outfit: null,
     };
@@ -58,24 +59,24 @@ export default {
         console.log(">", element);
         let category;
         if (element.category_large == "상의") {
-          console.log("dd");
           category = "top";
         } else if (element.category_large == "하의") {
-          console.log("ele", element);
           category = "bottom";
         } else if (element.category_large == "아우터") {
           category = "outer";
         } else if (element.category_large == "한벌옷") {
           category = "one_piece";
         }
-        params[JSON.stringify(category)] = element.clothes_id;
+        params[category] = Number(element.clothes_id);
       });
-      console.log("p", params);
+      let params_send = JSON.stringify(params);
+      console.log("params", params);
       Axios.post(
-        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/outfit",
-        params
+        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/outfit/" +
+          this.user_id,
+        params_send
       ).then((res) => {
-        console.log("success");
+        console.log(res);
       });
     },
   },
