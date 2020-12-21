@@ -1,21 +1,25 @@
 <template>
-  <div class="q-pa-md" style="max-width: 450px">
-    <q-list bordered>
+  <div class="q-pa-md banner" style="max-width: 450px">
+    <q-banner inline-actions rounded class="bg-primary text-grey-9">
+      친구에게 코디 전송하기
+    </q-banner>
+
+    <q-list bordered style="margin-top:20px;">
       <q-expansion-item
         group="somegroup"
         icon="fas fa-tshirt"
         label="TOP"
         default-opened
-        header-class="text-primary"
+        header-class="text-accent"
       >
         <div
           class="row q-col-gutter-x-xs q-col-gutter-y-lg"
-          style="margin: 0; padding: 0"
+          style="margin: 0; padding: 0" 
         >
-          <div class="col-4" v-for="item in top.data" :key="item.clothes_id">
+          <div class="col-4" v-for="item in top.data" :key="item.clothes_id" >
             <div class="my-content">
               <q-card style="border-radius: 0; box-shadow: 0">
-                <q-img :src="item.url" style="max-height:100px" />
+                <q-img :src="item.url" style="height: 100px;" />
                 <q-checkbox
                   size="sm"
                   v-model="selected"
@@ -31,7 +35,7 @@
 
       <q-separator />
 
-      <q-expansion-item group="somegroup" icon="perm_identity" label="BOTTOM" header-class="text-teal">
+      <q-expansion-item group="somegroup" icon="perm_identity" label="BOTTOM" header-class="text-accent">
         <div
           class="row q-col-gutter-x-xs q-col-gutter-y-lg"
           style="margin: 0; padding: 0"
@@ -39,7 +43,7 @@
           <div class="col-4" v-for="item in bottom.data" :key="item.clothes_id">
             <div class="my-content">
               <q-card style="border-radius: 0; box-shadow: 0">
-                <q-img :src="item.url" style="max-height:100px" />
+                <q-img :src="item.url" style="height: 100px;" />
                 <q-checkbox
                   size="sm"
                   v-model="selected"
@@ -55,7 +59,7 @@
 
       <q-separator />
 
-      <q-expansion-item group="somegroup" icon="shopping_cart" label="OUTER" header-class="text-purple">
+      <q-expansion-item group="somegroup" icon="shopping_cart" label="OUTER" header-class="text-accent"> 
         <div
           class="row q-col-gutter-x-xs q-col-gutter-y-lg"
           style="margin: 0; padding: 0"
@@ -63,7 +67,7 @@
           <div class="col-4" v-for="item in outer.data" :key="item.clothes_id">
             <div class="my-content">
               <q-card style="border-radius: 0; box-shadow: 0">
-                <q-img :src="item.url" />
+                <q-img :src="item.url" style="height: 100px;" />
                 <q-checkbox
                   size="sm"
                   v-model="selected"
@@ -83,7 +87,7 @@
         group="somegroup"
         icon="shopping_cart"
         label="ONE PIECE"
-        header-class="text-purple"
+        header-class="text-accent"
       >
         <div
           class="row q-col-gutter-x-xs q-col-gutter-y-lg"
@@ -92,7 +96,7 @@
           <div class="col-4" v-for="item in onepiece.data" :key="item.clothes_id">
             <div class="my-content">
               <q-card style="border-radius: 0; box-shadow: 0">
-                <q-img :src="item.url" />
+                <q-img :src="item.url" style="height: 150px;" />
                 <q-checkbox
                   size="sm"
                   v-model="selected"
@@ -107,7 +111,7 @@
       </q-expansion-item>
     </q-list>
     <router-link :to="{ name: 'PageMakeCodi', params: { outfit: selected } }">
-        <q-btn label="코디 전송하기" type="submit" :outfit="selected" color="pink-4" class="submitbtn"
+        <q-btn label="코디 전송하기" type="submit" :outfit="selected" class="submitbtn"
       /></router-link>
   </div>
 </template>
@@ -131,8 +135,9 @@ export default {
   },
   methods: {
     getTop() {
+      let id = this.$route.params.id
       Axios.get(
-        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/6/filter/top"
+        `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/6/filter/top`
       ).then((res) => {
         console.log(res);
         this.top = res;
@@ -176,5 +181,11 @@ export default {
 .submitbtn{
   margin-top: 20px;
   width: 150px;
+  background-color: #EEE2DC;
+  align-self: right;
+}
+
+.banner{
+  margin-bottom: 50px;
 }
 </style>
