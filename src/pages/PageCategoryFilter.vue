@@ -78,7 +78,6 @@
     </q-card>
   </q-page>
 </template>
-
 <script>
 import { date } from "quasar";
 import Axios from "axios";
@@ -86,13 +85,16 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "PageHome",
+  mounted() {
+    // this.rank = this.$route.params.rank
+    this.categoryFilter();
+
+  },
   data() {
     return {
-      clothes: null,
+        slide: 'style',
+        clothes: null,
     };
-  },
-  mounted() {
-    this.getClothes();
   },
   filters: {
     niceDate(value) {
@@ -100,32 +102,32 @@ export default {
     },
   },
   methods: {
-    getClothes() {
-      Axios.get(
-        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/all"
-      ).then((res) => {
-        console.log(res);
-        this.clothes = res;
-      });
-      console.log("finished");
+      async categoryFilter() {
+        let id = this.$route.params.id
+        console.log(id)
+          await Axios.get(
+              `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/all/${id}`,
+              ).then((res) => {
+            console.log(res);
+            this.clothes = res;
+            });
+        },
+        likeClothes(e, item) {
+            let id = item.clothes_id;
+            console.log(id);
+            let params = {
+                email: this.email,
+            };
+            console.log(params);
+            Axios.post(
+                `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/like/${id}`,
+                params
+            ).then((res) => {
+                console.log("success");
+            });
+        },
     },
-
-    likeClothes(e, item) {
-      let id = item.clothes_id;
-      console.log(id);
-      let params = {
-        email: this.email,
-      };
-      console.log(params);
-      Axios.post(
-        `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/like/${id}`,
-        params
-      ).then((res) => {
-        console.log("success");
-      });
-    },
-  },
-  computed: {
+    computed: {
     ...mapGetters({
       idToken: "account/idToken",
       userName: "account/userName",
@@ -134,12 +136,6 @@ export default {
       uid: "acccount/uid",
     }),
   },
+  
 };
 </script>
-
-
-<style lang="sass">
-.card-post
-  .q-img
-    min-height: 300px
-</style>

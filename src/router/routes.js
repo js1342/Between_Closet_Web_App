@@ -4,6 +4,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '/', component: () => import('pages/PageHome.vue') },
+      { path: '/colorfilter/:id', component: () => import('pages/PageColorFilter.vue') },
+      { path: '/categoryfilter/:id', component: () => import('pages/PageCategoryFilter.vue') },
       { path: '/friendlist', component: () => import('pages/PageFriendList.vue') },
       { path: '/friendsearch', component: () => import('pages/PageFriendSearch.vue') },
       { path: '/mypage', name: 'PageProfile', component: () => import('pages/PageProfile.vue') },
