@@ -21,7 +21,8 @@
           <outfit-images />
         </q-tab-panel>
         <q-tab-panel class="panel" name="history">
-          <outfit-images />
+
+          <outfit-history />
         </q-tab-panel>
         <q-tab-panel class="panel" name="clothes">
           <clothes-outfit-images :friendUserId="this.friend_info_user_id" />
@@ -41,6 +42,7 @@ export default {
   components: {
     ClothesOutfitImages,
     OutfitImages,
+    OutfitHistory,
   },
   mounted() {
     this.test();

@@ -3,12 +3,11 @@
     <q-timeline color="secondary">
       <q-timeline-entry>
         <template v-slot:title>
-          Event Title
+          2020년 12월 20일
         </template>
         <template v-slot:subtitle>
-          February 22, 1986
+          December 10, 2020
         </template>
-
         <div>
           <q-card style="border-radius: 0; box-shadow: 0; margin: 0; padding: 0;">
               <q-img
@@ -20,15 +19,15 @@
 
       <q-timeline-entry icon="delete">
         <template v-slot:title>
-          Event Title
+          2020년 12월 15일
         </template>
         <template v-slot:subtitle>
-          February 21, 1986
+          December 15, 2020
         </template>
 
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
+        <q-card style="border-radius: 0; box-shadow: 0; margin: 0; padding: 0;">
+          <outfit-images />
+        </q-card>
       </q-timeline-entry>
     </q-timeline>
  </div>
@@ -37,8 +36,10 @@
 <script>
 import Axios from "axios";
 import { mapGetters } from "vuex";
+import OutfitImages from './OutfitImages.vue';
 
 export default {
+  components: { OutfitImages },
   name: "OutfitHistory",
   data() {
     return {
@@ -72,7 +73,7 @@ export default {
     topClicked() {},
     bottomClicked() {},
     outerClicked() {},
-    dessClicked() {
+    dressClicked() {
       console.log("ee");
     },
   },
