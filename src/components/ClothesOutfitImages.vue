@@ -237,7 +237,7 @@ export default {
         this.dress = await Axios.get(
           "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/" +
             this.friendUserId +
-            "/filter/dress",
+            "/filter/one_piece",
           reqHeader
         );
       } else {
@@ -249,7 +249,7 @@ export default {
           },
         };
         this.dress = await Axios.get(
-          "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/filter/dress",
+          "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/filter/one_piece",
           reqHeader
         );
       }
