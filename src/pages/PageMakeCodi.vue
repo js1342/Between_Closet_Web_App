@@ -18,7 +18,7 @@
         style="margin:0, padding: 0;"
       >
         <q-card style="border-radius: 0; box-shadow: 0; margin: 0; padding: 0">
-          <q-img :src="item.cropped" style="float: left" />
+          <q-img :src="item.croppedw" style="float: left" />
         </q-card>
       </div>
     </div>
@@ -34,25 +34,49 @@
 
 <script>
 import PageOutfitSelect from "./PageOutfitSelect";
-
+import Axios from "axios";
 export default {
   mounted() {
-    this.test();
+    this.friend_id = this.outfit[0];
+    this.real_outfit = this.outfit.slice(1, this.outfit.length);
+    console.log(">>>friend_id>>>", this.real_outfit);
   },
   data() {
     return {
+      friend_id: null,
       outfit: null,
+      real_outfit: null,
     };
   },
   created() {
     this.outfit = this.$route.params.outfit;
   },
   methods: {
-    test() {
-      console.log(">>>>>>>>>>", this.outfit[0].cropped);
-    },
     sendOutfit() {
-      console.log("clicked!!!");
+      let params = {};
+      this.real_outfit.forEach((element) => {
+        console.log(">", element);
+        let category;
+        if (element.category_large == "상의") {
+          console.log("dd");
+          category = "top";
+        } else if (element.category_large == "하의") {
+          console.log("ele", element);
+          category = "bottom";
+        } else if (element.category_large == "아우터") {
+          category = "outer";
+        } else if (element.category_large == "한벌옷") {
+          category = "one_piece";
+        }
+        params[JSON.stringify(category)] = element.clothes_id;
+      });
+      console.log("p", params);
+      Axios.post(
+        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/outfit",
+        params
+      ).then((res) => {
+        console.log("success");
+      });
     },
   },
 };

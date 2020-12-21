@@ -1,5 +1,16 @@
 <template>
   <q-page class="constrain q-pa-md">
+    <div style="margin-bottom: 3%">
+      <q-btn round style="margin: 1%" color="white" />
+      <q-btn round style="margin: 1%" color="amber" />
+      <q-btn round style="margin: 1%" color="pink-3" />
+      <q-btn round style="margin: 1%" color="red-8" />
+
+      <q-btn round style="margin: 1%" color="blue-10" />
+      <q-btn round style="margin: 1%" color="grey-7" />
+      <q-btn round style="margin: 1%" color="brown-8" />
+      <q-btn round style="margin: 1%" color="grey-10" />
+    </div>
     <q-card
       v-for="item in clothes.data"
       :key="`none-${item}`"
@@ -15,7 +26,7 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label class="text-bold">{{item.name}}</q-item-label>
+          <q-item-label class="text-bold">{{ item.name }}</q-item-label>
           <q-item-label caption>
             {{ item.email }}
           </q-item-label>
@@ -24,9 +35,22 @@
 
       <q-separator />
       <q-img :src="item.url" />
-      <q-btn v-if="item.liked_users.includes(userName)"
-      id="like" flat size="18px" icon="eva-heart" />
-      <q-btn v-else id="like" flat size="18px" icon="eva-heart-outline" :clothesid="item.clothes_id" @click="likeClothes($event, item)"/>
+      <q-btn
+        v-if="item.liked_users.includes(userName)"
+        id="like"
+        flat
+        size="18px"
+        icon="eva-heart"
+      />
+      <q-btn
+        v-else
+        id="like"
+        flat
+        size="18px"
+        icon="eva-heart-outline"
+        :clothesid="item.clothes_id"
+        @click="likeClothes($event, item)"
+      />
       <q-card-section>
         <div>{{ item.color }}</div>
         <!-- <div class="text-caption text-grey">{{ post.date | niceDate }}</div> -->
@@ -47,8 +71,8 @@ export default {
       clothes: null,
     };
   },
-  mounted () {
-    this.getClothes()
+  mounted() {
+    this.getClothes();
   },
   filters: {
     niceDate(value) {
@@ -67,19 +91,19 @@ export default {
     },
 
     likeClothes(e, item) {
-      let id = item.clothes_id
-      console.log(id)
+      let id = item.clothes_id;
+      console.log(id);
       let params = {
-        email: this.email
-      }
-      console.log(params)
+        email: this.email,
+      };
+      console.log(params);
       Axios.post(
-        `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/like/${id}`, params
+        `https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/clothes/like/${id}`,
+        params
       ).then((res) => {
-        console.log("success")
+        console.log("success");
       });
     },
-    
   },
   computed: {
     ...mapGetters({
@@ -87,9 +111,9 @@ export default {
       userName: "account/userName",
       email: "account/email",
       friends: "account/friends",
-      uid: "acccount/uid"
-    })
-  }
+      uid: "acccount/uid",
+    }),
+  },
 };
 </script>
 
