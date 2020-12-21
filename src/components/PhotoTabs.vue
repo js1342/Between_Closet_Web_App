@@ -47,6 +47,7 @@ export default {
     OutfitImages,
     OutfitHistory,
   },
+
   data() {
     return {
       tab: "mails",
