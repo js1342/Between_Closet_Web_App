@@ -25,7 +25,7 @@
       <q-item class="align-right">
         <q-item-section style="padding: 0px">
           <q-btn
-            color="grey"
+            color="pink-4"
             icon-right="send"
             label="코디 하러 가기"
             @click="$router.replace(`/outfitselect`)"
@@ -64,7 +64,12 @@
               params: { friend_id: user.user_id },
             }"
           >
-            <q-btn label="코디 하러 가기" />
+            <q-btn
+              label="코디 하러 가기"
+              color="pink-4"
+              icon-right="send"
+              style="width: 96%; margin-left: 3%; mragin-right: 3%"
+            />
           </router-link>
         </q-item-section>
       </q-item>
@@ -78,9 +83,6 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "UserProfile",
-  mounted() {
-    this.test();
-  },
 
   data() {
     return {
@@ -91,11 +93,7 @@ export default {
   created() {
     this.user = this.$route.params.friend_info;
   },
-  methods: {
-    test() {
-      console.log(">>>>>prop friend>>>>>", this.friend);
-    },
-  },
+
   computed: {
     ...mapGetters({
       idToken: "account/idToken",

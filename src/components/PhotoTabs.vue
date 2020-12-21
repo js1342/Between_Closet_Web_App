@@ -21,7 +21,7 @@
           <outfit-images />
         </q-tab-panel>
         <q-tab-panel class="panel" name="history">
-          <outfit-images />
+          <outfit-history />
         </q-tab-panel>
         <q-tab-panel class="panel" name="clothes">
           <clothes-outfit-images :friendUserId="this.friend_info_user_id" />
@@ -35,12 +35,12 @@ import ClothesOutfitImages from "src/components/ClothesOutfitImages.vue";
 import OutfitImages from "./OutfitImages.vue";
 import OutfitHistory from "./OutfitHistory.vue";
 
-
 export default {
   name: "PhotoTabs",
   components: {
     ClothesOutfitImages,
     OutfitImages,
+    OutfitHistory,
   },
   mounted() {
     this.test();
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 <style scoped>
-.panel{
+.panel {
   margin: 0px;
   padding: 0px;
 }

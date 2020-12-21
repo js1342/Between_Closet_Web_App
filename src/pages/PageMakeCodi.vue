@@ -27,6 +27,7 @@
       icon-right="send"
       label="친구에게 보내기"
       style="width: 94%; margin: 0 3% 0 3%"
+      @click="sendOutfit"
     />
   </div>
 </template>
@@ -49,6 +50,9 @@ export default {
   methods: {
     test() {
       console.log(">>>>>>>>>>", this.outfit[0].cropped);
+    },
+    sendOutfit() {
+      console.log("clicked!!!");
     },
   },
 };
