@@ -1,42 +1,11 @@
 <template>
- <div class="q-px-lg q-pb-md">
-    <q-timeline color="secondary">
-      <q-timeline-entry>
-        <template v-slot:title>
-          2020년 12월 20일
-        </template>
-        <template v-slot:subtitle>
-          December 10, 2020
-        </template>
-        <div>
-          <q-card style="border-radius: 0; box-shadow: 0; margin: 0; padding: 0;">
-              <q-img
-                src="https://i0.codibook.net/files/thumb/big/1975072941997/1bbfba10c854/1809426185.jpg"
-              />
-            </q-card>
-        </div>
-      </q-timeline-entry>
-
-      <q-timeline-entry icon="delete">
-        <template v-slot:title>
-          2020년 12월 15일
-        </template>
-        <template v-slot:subtitle>
-          December 15, 2020
-        </template>
-
-        <q-card style="border-radius: 0; box-shadow: 0; margin: 0; padding: 0;">
-          <outfit-images />
-        </q-card>
-      </q-timeline-entry>
-    </q-timeline>
- </div>
+  <outfit-images />
 </template>
 
 <script>
 import Axios from "axios";
 import { mapGetters } from "vuex";
-import OutfitImages from './OutfitImages.vue';
+import OutfitImages from "./OutfitImages.vue";
 
 export default {
   components: { OutfitImages },
