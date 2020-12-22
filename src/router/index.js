@@ -39,7 +39,7 @@ const oauth = {
 if (!isLocalhost) {
   oauth.redirectSignIn = 'https://master.d1smeitbs08nlb.amplifyapp.com/';
   oauth.redirectSignOut = 'https://master.d1smeitbs08nlb.amplifyapp.com/';
-}
+} 
 
 // copy the constant config (aws-exports.js) because config is read only.
 var configUpdate = awsmobile;
