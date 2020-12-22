@@ -126,7 +126,7 @@ export default {
                 console.log("success");
             });
         },
-    },
+    }, 
     computed: {
     ...mapGetters({
       idToken: "account/idToken",
