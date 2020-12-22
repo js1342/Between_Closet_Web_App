@@ -28,7 +28,9 @@
             color="pink-4"
             icon-right="send"
             label="코디 하러 가기"
-            @click="$router.push({path: 'outfitselect', params:{ id: user_id }})"
+            @click="
+              $router.push({ path: 'outfitselect', params: { id: user_id } })
+            "
           />
         </q-item-section>
       </q-item>

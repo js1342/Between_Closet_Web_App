@@ -1,9 +1,15 @@
 <template>
   <div class="q-px-lg q-pb-md">
     <q-timeline color="secondary">
-      <q-timeline-entry v-for="item in outfit_res.data" :key="`none-${item}`">
-        <template v-slot:title> 2020년 12월 20일 </template>
-        <template v-slot:subtitle> December 10, 2020 </template>
+      <q-timeline-entry
+        v-for="(item, idx) in this.outfit_date"
+        :key="`none-${idx}`"
+      >
+        <template v-slot:title>{{ item }} </template>
+        <template v-slot:subtitle> 좋아요 </template>
+      </q-timeline-entry>
+
+      <div v-for="item in this.user_outfit" :key="`none-${item}`">
         <img
           style="
             max-width: 50%;
@@ -18,7 +24,7 @@
 
         <img style="max-width: 30%; margin-top: 20%" :src="item.outer" />
         <img style="max-height: 200px; margin-left: 30%" :src="item.bottom" />
-      </q-timeline-entry>
+      </div>
     </q-timeline>
   </div>
 </template>
@@ -29,8 +35,10 @@ export default {
   name: "OutfitImages",
   data() {
     return {
-      outfit_res: { type: Array, default: () => [] },
+      // outfit_res: { type: Array, default: () => [] },
       user_id: null,
+      user_outfit: null,
+      outfit_date: null,
     };
   },
   props: {
@@ -55,9 +63,10 @@ export default {
           this.user_id
       ).then((res) => {
         console.log(">>>>", res);
-        this.outfit_res = res;
+        this.user_outfit = res.data.outfit;
+        this.outfit_date = res.data.date;
+        console.log("user_outfit(after get)", this.user_outfit[0].top);
       });
-      console.log("finished ->", this.outfit_res);
     },
   },
 };

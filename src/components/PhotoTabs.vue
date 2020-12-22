@@ -10,7 +10,6 @@
         narrow-indicator
       >
         <q-tab name="outfit" label="코디" />
-        <q-tab name="history" label="히스토리" />
         <q-tab name="clothes" label="옷" />
       </q-tabs>
 
@@ -19,9 +18,6 @@
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel class="panel" name="outfit">
           <outfit-images :friendUserId="this.friend_info_user_id" />
-        </q-tab-panel>
-        <q-tab-panel class="panel" name="history">
-          <outfit-history :friendUserId="this.friend_info_user_id" />
         </q-tab-panel>
         <q-tab-panel class="panel" name="clothes">
           <clothes-outfit-images :friendUserId="this.friend_info_user_id" />
@@ -33,14 +29,12 @@
 <script>
 import ClothesOutfitImages from "src/components/ClothesOutfitImages.vue";
 import OutfitImages from "./OutfitImages.vue";
-import OutfitHistory from "./OutfitHistory.vue";
 
 export default {
   name: "PhotoTabs",
   components: {
     ClothesOutfitImages,
     OutfitImages,
-    OutfitHistory,
   },
   mounted() {
     this.test();
