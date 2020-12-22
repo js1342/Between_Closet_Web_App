@@ -1,34 +1,49 @@
 <template>
-  <div>
-    <img
-      style="
-        max-width: 40%;
-        margin-top: 10%;
-        margin-left: 5%;
-        float: left;
-        border: 1px;
-      "
-      src="https://cropped-photo.s3.us-east-2.amazonaws.com/cv2_test_6015_3879_white.jpg"
-    />
+  <div class="q-px-lg q-pb-md">
+    <q-timeline color="secondary">
+      <q-timeline-entry v-for="item in outfit_res.data" :key="`none-${item}`">
+        <template v-slot:title> 2020년 12월 20일 </template>
+        <template v-slot:subtitle> December 10, 2020 </template>
+        <img
+          style="
+            max-width: 40%;
+            margin-top: 10%;
+            margin-left: 5%;
+            float: left;
+            border: 1px;
+          "
+          :src="item.top"
+        />
 
-    <img
-      style="max-width: 50%; margin-top: 20%"
-      src="https://cropped-photo.s3.us-east-2.amazonaws.com/cv2_test_7390_3924_white.jpg"
-    />
-    <img
-      style="max-height: 200px; margin-left: 30%"
-      src="https://cropped-photo.s3.us-east-2.amazonaws.com/cv2_test_516_6320_white.jpg"
-    />
+        <img style="max-width: 40%; margin-top: 20%" :src="item.outer" />
+        <img style="max-height: 200px; margin-left: 30%" :src="item.bottom" />
+      </q-timeline-entry>
+    </q-timeline>
   </div>
 </template>
 
 <script>
+import Axios from "axios";
 export default {
   name: "OutfitImages",
   data() {
-    return {};
+    return {
+      outfit_res: { type: Array, default: () => [] },
+    };
   },
-
-  methods: {},
+  mounted() {
+    this.getOutfits();
+  },
+  methods: {
+    getOutfits() {
+      Axios.get(
+        "https://zizqnx33mi.execute-api.us-east-2.amazonaws.com/dev/outfit-clothes/6"
+      ).then((res) => {
+        console.log(">>>>", res);
+        this.outfit_res = res;
+      });
+      console.log("finished ->", this.outfit_res);
+    },
+  },
 };
 </script>
