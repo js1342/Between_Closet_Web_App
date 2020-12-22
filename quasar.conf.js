@@ -63,6 +63,7 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
+        minify:false
       },
     },
 
@@ -185,6 +186,7 @@ module.exports = function (/* ctx */) {
       extendWebpack (/* cfg */) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
+        minify: false
       }
     }
   }
