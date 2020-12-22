@@ -1,6 +1,6 @@
 <template>
   <q-page class="constrain q-pa-md">
-    <div>
+    <div> 
       <q-page-sticky position="bottom-right" :offset="[18, 18]" class="z-top">
         <q-fab
           icon="add"
