@@ -17,7 +17,40 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel class="panel" name="outfit">
-          <outfit-images :friendUserId="this.friend_info_user_id" />
+          <div class="q-px-lg q-pb-md">
+            <q-timeline color="secondary">
+              <q-timeline-entry
+                title="2020년 12월 22일"
+                subtitle="좋아요 2개"
+              >
+                <div>
+                  <img style="max-width: 80%; margin-top: 20%" src="https://clothes-photo.s3.amazonaws.com/Screen+Shot+2020-12-23+at+7.56.43+AM.png" />
+                </div>
+              </q-timeline-entry>
+
+              <q-timeline-entry
+                title="2020년 12월 18일"
+                subtitle="좋아요 10개"
+                icon="delete"
+              >
+                <img style="max-width: 80%; margin-top: 20%" src="https://clothes-photo.s3.amazonaws.com/Screen+Shot+2020-12-23+at+7.58.55+AM.png" />
+              </q-timeline-entry>
+              <q-timeline-entry
+                title="2020년 12월 16일"
+                subtitle="좋아요 0개"
+                icon="delete"
+              >
+                <img style="max-width: 80%; margin-top: 20%" src="https://clothes-photo.s3.amazonaws.com/Screen+Shot+2020-12-23+at+8.16.28+AM.png" />
+              </q-timeline-entry>
+              <q-timeline-entry
+                title="2020년 12월 15일"
+                subtitle="좋아요 0개"
+                icon="delete"
+              >
+                <img style="max-width: 80%; margin-top: 20%" src="https://clothes-photo.s3.amazonaws.com/Screen+Shot+2020-12-23+at+7.58.18+AM.png" />
+              </q-timeline-entry>
+            </q-timeline>
+          </div>
         </q-tab-panel>
         <q-tab-panel class="panel" name="clothes">
           <clothes-outfit-images :friendUserId="this.friend_info_user_id" />

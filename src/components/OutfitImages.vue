@@ -46,7 +46,7 @@ export default {
   },
   mounted() {
     if (this.friendUserId == null) {
-      this.user_id = 2; // ★★★★★★★★★ 본인 아이디
+      this.user_id = 1; // ★★★★★★★★★ 본인 아이디
     } else {
       this.user_id = this.friendUserId;
     }
@@ -65,7 +65,7 @@ export default {
         console.log(">>>>", res);
         this.user_outfit = res.data.outfit;
         this.outfit_date = res.data.date;
-        console.log("user_outfit(after get)", this.user_outfit[0].top);
+        // console.log("user_outfit(after get)", this.user_outfit[0].top);
       });
     },
   },
