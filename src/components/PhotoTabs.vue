@@ -18,10 +18,10 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel class="panel" name="outfit">
-          <outfit-images />
+          <outfit-images :friendUserId="this.friend_info_user_id" />
         </q-tab-panel>
         <q-tab-panel class="panel" name="history">
-          <outfit-history />
+          <outfit-history :friendUserId="this.friend_info_user_id" />
         </q-tab-panel>
         <q-tab-panel class="panel" name="clothes">
           <clothes-outfit-images :friendUserId="this.friend_info_user_id" />
@@ -56,7 +56,7 @@ export default {
 
   data() {
     return {
-      tab: "mails",
+      tab: "outfit",
       friend_info_user_id: null,
     };
   },

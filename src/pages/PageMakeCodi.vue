@@ -25,13 +25,17 @@
           </q-card>
         </div>
       </div>
-      <q-btn
-        color="grey"
-        icon-right="send"
-        label="친구에게 보내기"
-        style="width: 94%; margin: 0 3% 0 3%"
-        @click="sendOutfit"
-      />
+      <router-link
+        :to="{ name: 'PageProfile', params: { user_id: this.user_id } }"
+      >
+        <q-btn
+          color="grey"
+          icon-right="send"
+          label="친구에게 보내기"
+          style="width: 94%; margin: 0 3% 0 3%"
+          @click="sendOutfit"
+        />
+      </router-link>
     </div>
   </q-page>
 </template>
@@ -44,7 +48,12 @@ export default {
   mounted() {
     this.user_id = this.outfit[0];
     this.real_outfit = this.outfit.slice(1, this.outfit.length);
-    console.log(">>>user>>>", this.real_outfit);
+    console.log(
+      ">>>user_id>>>",
+      this.user_id,
+      ">>>>real_outfit>>>>",
+      this.real_outfit
+    );
   },
   data() {
     return {
@@ -80,7 +89,7 @@ export default {
           this.user_id,
         params_send
       ).then((res) => {
-        console.log(res);
+        console.log("after click send btn", res);
       });
     },
   },

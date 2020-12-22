@@ -234,7 +234,7 @@ export default {
       console.log("finished");
     },
     checkOutfit() {
-      console.log(this.friend_user_id);
+      console.log(this.selected);
     },
   },
 };
