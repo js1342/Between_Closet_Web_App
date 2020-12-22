@@ -1,7 +1,11 @@
 <template >
   <div>
     <div style="margin-top: 15%; margin-bottom: 13%">
-      <input class="input_box bg-grey-2" @input="myChange" />
+      <input
+        class="input_box bg-grey-2"
+        placeholder="친구 검색"
+        @input="myChange"
+      />
       <q-btn @click="ssearch" icon="eva-search-outline" flat></q-btn>
     </div>
     <div v-if="searched_user != null">
