@@ -113,7 +113,6 @@ export default {
         reqHeader
       );
       // console.log(this.friends.data);
-      console.log("friends token>>", this.idToken);
     },
 
     async accept(user_id) {
