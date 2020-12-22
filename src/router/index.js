@@ -37,8 +37,8 @@ const oauth = {
 
 // if not, update the URLs
 if (!isLocalhost) {
-  oauth.redirectSignIn = 'https://master.dc7bae1xw270j.amplifyapp.com/';
-  oauth.redirectSignOut = 'https://master.dc7bae1xw270j.amplifyapp.com/';
+  oauth.redirectSignIn = 'https://master.d1smeitbs08nlb.amplifyapp.com/';
+  oauth.redirectSignOut = 'https://master.d1smeitbs08nlb.amplifyapp.com/';
 }
 
 // copy the constant config (aws-exports.js) because config is read only.
