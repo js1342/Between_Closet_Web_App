@@ -63,9 +63,9 @@ module.exports = function (/* ctx */) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack (cfg) {
-        cfg.module.rules.push({
-          minify: false 
-        })
+        // cfg.module.rules.push({
+        //   minify: false 
+        // })
       },
       extendHtmlWebpackPlugin (cfg) {
         minify:false
