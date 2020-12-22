@@ -16,8 +16,8 @@ const awsmobile = {
             "phone",
             "profile"
         ],
-        "redirectSignIn": "http://localhost:8080/",
-        "redirectSignOut": "http://localhost:8080/",
+        "redirectSignIn": "http://localhost:8080/,js1342://callback/",
+        "redirectSignOut": "http://localhost:8080/,js1342://signout/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS"

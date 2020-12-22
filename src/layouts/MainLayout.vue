@@ -160,24 +160,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass">
-  .loginbtn
-    float-right
-
-  .q-toolbar
-      height: 77px
-  .q-toolbar__title
-    font-size: 30px
-      
-
-
-  .q-footer
-    .q-tab__icon
-      font-size: 30px
-
-  body
-      font-family: 'Nanum Gothic Coding', monospace
-
-    
-</style>
