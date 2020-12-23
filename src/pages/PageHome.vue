@@ -23,10 +23,10 @@
           direction="up"
           color="accent"
         >
-          <q-fab-action @click="$router.push({path: 'categoryfilter/top'})" color="white" />
-          <q-fab-action @click="$router.push({path: 'categoryfilter/bottom'})" color="amber" />
-          <q-fab-action @click="$router.push({path: 'categoryfilter/outer'})" color="pink-3" />
-          <q-fab-action @click="$router.push({path: 'categoryfilter/one_piece'})" color="red-8" />
+          <q-fab-action external-label label-position="left" label="top" @click="$router.push({path: 'categoryfilter/top'})" color="white"/>
+          <q-fab-action external-label label-position="left" label="bottom" @click="$router.push({path: 'categoryfilter/bottom'})" color="amber" />
+          <q-fab-action external-label label-position="left" label="outer" @click="$router.push({path: 'categoryfilter/outer'})" color="pink-3" />
+          <q-fab-action external-label label-position="left" label="one_piece" @click="$router.push({path: 'categoryfilter/one_piece'})" color="red-8" />
         </q-fab>
       </q-page-sticky>
     </div>
